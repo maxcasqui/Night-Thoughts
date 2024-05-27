@@ -11,8 +11,9 @@
 1. Clone the repo
    ```sh
    git clone https://github.com/yourusername/your-repo-name.git
-   Open the project in Android Studio
-   Build and run the project on an emulator or actual device
+   
+  Open the project in Android Studio
+  Build and run the project on an emulator or actual device
 ### Build With:
 
 - MVVM and Clean Architecture.
