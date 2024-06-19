@@ -1,19 +1,26 @@
 package com.adriand.nightthoughts.domain
 
+import android.util.Log
 import com.adriand.nightthoughts.data.local.entity.toDatabase
+import com.adriand.nightthoughts.data.repository.AuthorRepository
 import com.adriand.nightthoughts.data.repository.QuoteRepository
 import com.adriand.nightthoughts.domain.model.Quote
 import javax.inject.Inject
 
-class GetQuotes @Inject constructor(private val repository: QuoteRepository) {
-
+class GetQuotes @Inject constructor(
+    private val quoteRepo: QuoteRepository
+) {
     suspend operator fun invoke(): List<Quote> {
-        val quotes = repository.getAllQuotesFromApi()
+        val quotes = quoteRepo.getAllQuotesFromApi()
+        Log.i("Info", quotes.toString())
 
         return if (quotes.isNotEmpty()) {
-            repository.clearQuotes()
-            repository.saveQuotes(quotes = quotes.map { it.toDatabase() })
+            //quoteRepo.clearQuotes()
+            quoteRepo.saveQuotes(quotes = quotes.map { it.toDatabase() })
             quotes
-        } else { repository.getAllQuotesFromDatabase() }
+        } else {
+            Log.i("Info", "Getting data from db")
+            quoteRepo.getAllQuotesFromDatabase()
+        }
     }
 }

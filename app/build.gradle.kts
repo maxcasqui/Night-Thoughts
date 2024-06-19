@@ -59,6 +59,7 @@ dependencies {
 
     // View Model - LifeCycle
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
 
     // Live Data - Observer
     implementation(libs.androidx.lifecycle.livedata.ktx)
@@ -74,4 +75,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
+
+    // Picasso
+    implementation(libs.picasso)
 }

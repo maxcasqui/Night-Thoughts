@@ -9,7 +9,7 @@ import com.adriand.nightthoughts.data.local.entity.QuoteEntity
 @Dao
 interface QuoteDao {
 
-    @Query("SELECT * FROM quote_table ORDER BY author DESC")
+    @Query("SELECT * FROM quote_table")
     suspend fun getAllQuotes(): List<QuoteEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

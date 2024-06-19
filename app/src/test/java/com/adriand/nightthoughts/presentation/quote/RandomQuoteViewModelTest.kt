@@ -18,7 +18,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class QuoteViewModelTest {
+class RandomQuoteViewModelTest {
 
     @RelaxedMockK
     private lateinit var getQuotes: GetQuotes
@@ -26,7 +26,7 @@ class QuoteViewModelTest {
     @RelaxedMockK
     private lateinit var getRandomQuote: GetRandomQuote
 
-    private lateinit var quoteViewModel: QuoteViewModel
+    private lateinit var randomQuoteViewModel: RandomQuoteViewModel
 
     @get:Rule
     var rule:InstantTaskExecutorRule = InstantTaskExecutorRule()
@@ -34,7 +34,7 @@ class QuoteViewModelTest {
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        quoteViewModel = QuoteViewModel(getQuotes, getRandomQuote)
+        randomQuoteViewModel = RandomQuoteViewModel(getQuotes, getRandomQuote)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
 
@@ -48,42 +48,42 @@ class QuoteViewModelTest {
         runTest {
 
             // Given
-            val quoteList = listOf(Quote("quote test 1", "tester"), Quote("quote test 2", "tester"))
+            val quoteList = listOf(Quote(0, 0, "quote"), Quote(0, 0, "quote2"))
             coEvery { getQuotes() } returns quoteList
 
             // When
-            quoteViewModel.onCreate()
+            randomQuoteViewModel.onCreate()
 
             // Then
-            assert(quoteViewModel.quoteModel.value == quoteList.first())
+            assert(randomQuoteViewModel.quoteModel.value == quoteList.first())
         }
 
     @Test
     fun `when randomQuote returns a quote set on the livedata`() = runTest {
 
         // Given
-        val quote = Quote("quote test", "tester")
+        val quote = Quote(0, 0, "quote")
         coEvery { getRandomQuote() } returns quote
 
         // When
-        quoteViewModel.randomQuote()
+        randomQuoteViewModel.randomQuote()
 
         // Then
-        assert(quoteViewModel.quoteModel.value == quote)
+        assert(randomQuoteViewModel.quoteModel.value == quote)
     }
 
     @Test
     fun `if randomQuote returns null ui should show error message`() = runTest {
 
         // Given
-        val quote = Quote("Error Found", "")
-        quoteViewModel.quoteModel.value = quote
+        val quote = Quote(0, 0, "")
+        randomQuoteViewModel.quoteModel.value = quote
         coEvery { getRandomQuote() } returns null
 
         // When
-        quoteViewModel.randomQuote()
+        randomQuoteViewModel.randomQuote()
 
         // Then
-        assert(quoteViewModel.quoteModel.value == quote)
+        assert(randomQuoteViewModel.quoteModel.value == quote)
     }
 }

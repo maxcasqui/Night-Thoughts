@@ -24,4 +24,8 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideQuoteDao(db: QuoteDatabase) = db.getQuoteDao()
+
+    @Singleton
+    @Provides
+    fun provideAuthorDao(db: QuoteDatabase) = db.getAuthorDao()
 }

@@ -7,4 +7,7 @@
     <color name="light_blue">#A6D3F2</color>
     <color name="light_yellow">#F7D76D</color>
     <color name="light_green">#AFC3AB</color>
+    <color name="dark_blue">#003459</color>
+    <color name="dark_blue_2">#00171F</color>
+    <color name="accent">#007EA7</color>
 </resources>
