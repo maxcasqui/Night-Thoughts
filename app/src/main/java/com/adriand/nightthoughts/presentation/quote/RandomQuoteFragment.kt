@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import com.adriand.nightthoughts.R
 import com.adriand.nightthoughts.databinding.FragmentRandomQuoteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -28,8 +29,8 @@ class RandomQuoteFragment : Fragment() {
         randomQuoteViewModel.onCreate()
 
         randomQuoteViewModel.quoteModel.observe(viewLifecycleOwner) {
-            binding.tvQuote.text = it.quote
-            binding.tvAuthor.text = it.idAuthor.toString()
+            binding.tvQuote.text = getString(R.string.quote, it.quote)
+            binding.tvAuthor.text = it.author
         }
 
         randomQuoteViewModel.isLoading.observe(viewLifecycleOwner) {

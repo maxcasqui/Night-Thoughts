@@ -24,4 +24,4 @@ data class QuoteEntity(
     @ColumnInfo(name = "quote") val quote: String
 )
 
-fun Quote.toDatabase() = QuoteEntity(id = id, idAuthor = idAuthor, quote = quote)
+fun Quote.toDatabase() = QuoteEntity(id = id, idAuthor = author, quote = quote)

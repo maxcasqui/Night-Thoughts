@@ -2,7 +2,6 @@ package com.adriand.nightthoughts.domain
 
 import android.util.Log
 import com.adriand.nightthoughts.data.local.entity.toDatabase
-import com.adriand.nightthoughts.data.repository.AuthorRepository
 import com.adriand.nightthoughts.data.repository.QuoteRepository
 import com.adriand.nightthoughts.domain.model.Quote
 import javax.inject.Inject

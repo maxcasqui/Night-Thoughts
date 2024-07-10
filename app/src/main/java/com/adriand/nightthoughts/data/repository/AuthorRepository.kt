@@ -23,6 +23,10 @@ class AuthorRepository @Inject constructor(
         authorDao.saveAuthors(authors)
     }
 
+    suspend fun getAuthorById(id: Int): String{
+        return authorDao.getAuthorById(id)
+    }
+
     suspend fun clearAuthors() {
         authorDao.deleteAllAuthors()
     }

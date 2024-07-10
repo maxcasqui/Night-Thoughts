@@ -1,6 +1,5 @@
 package com.adriand.nightthoughts.presentation.quote
 
-import android.content.res.Resources
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.adriand.nightthoughts.R
